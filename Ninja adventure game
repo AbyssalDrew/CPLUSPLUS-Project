@@ -1,0 +1,162 @@
+#include <iostream>
+#include <map>
+#include <string>
+
+using namespace std;
+
+class AdventureGame {
+private:
+    map<int, string> story;
+
+public:
+    AdventureGame() {
+        cout << "You are a young ninja in the Hidden Leaf Village, dreaming of becoming the Hokage one day.\n\n";
+
+        story[1] = "One day, your sensei asks you to choose a path for your next mission. What do you choose?";
+        story[2] = "You choose to go on a training mission to improve your skills. Which skill would you like to focus on?";
+        story[3] = "You decide to explore the village to learn more about its secrets. Where would you like to go?";
+        story[4] = "You encounter a powerful enemy! What will you do?";
+        story[5] = "You have avenged your fallen comrades. What is your next move?";
+        story[6] = "You choose to follow the path of peace and diplomacy. How will you approach the situation?";
+        story[7] = "You have become the Hokage, achieving your lifelong dream. The end.";
+        story[8] = "You join a group of rogue ninjas and set out on a dangerous mission. What is your plan?";
+        story[9] = "Your past actions haunt you. How will you seek redemption?";
+        story[10] = "You have embraced a peaceful path and worked towards uniting the ninja world. The end.";
+    }
+
+    void displayStory(int part) {
+        cout << story[part] << "\n";
+    }
+
+    int makeChoice() {
+        int choice;
+        cout << "Enter your choice: ";
+        cin >> choice;
+        return choice;
+    }
+
+    void startGame() {
+        int part = 1;
+
+        while (part != 0) {
+            displayStory(part);
+
+            switch (part) {
+                case 1:
+                    cout << "1. Choose a mission to protect the village\n";
+                    cout << "2. Choose a mission to explore the neighboring village\n";
+                    break;
+
+                case 2:
+                    cout << "1. Focus on improving your ninjutsu techniques\n";
+                    cout << "2. Focus on improving your taijutsu skills\n";
+                    break;
+
+                case 3:
+                    cout << "1. Visit the Hidden Leaf Village library\n";
+                    cout << "2. Explore the training grounds\n";
+                    break;
+
+                case 4:
+                    cout << "1. Confront the enemy head-on\n";
+                    cout << "2. Retreat and strategize\n";
+                    break;
+
+                case 5:
+                    cout << "1. Continue the mission and honor their memory\n";
+                    cout << "2. Return to the village to report the loss\n";
+                    break;
+
+                case 6:
+                    cout << "1. Negotiate for peace and understanding\n";
+                    cout << "2. Offer assistance and support\n";
+                    break;
+
+                case 8:
+                    cout << "1. Execute the mission stealthily\n";
+                    cout << "2. Confront the target directly\n";
+                    break;
+
+                case 9:
+                    cout << "1. Seek forgiveness from those you've wronged\n";
+                    cout << "2. Dedicate yourself to protecting and serving the village\n";
+                    break;
+
+                default:
+                    cout << "Invalid choice. Exiting.\n";
+                    part = 0;
+                    continue;
+            }
+
+            int choice = makeChoice();
+            switch (part) {
+                case 1:
+                    if (choice == 1)
+                        part = 2;
+                    else if (choice == 2)
+                        part = 3;
+                    break;
+
+                case 2:
+                    if (choice == 1)
+                        part = 4;
+                    else if (choice == 2)
+                        part = 5;
+                    break;
+
+                case 3:
+                    if (choice == 1)
+                        part = 6;
+                    else if (choice == 2)
+                        part = 0;  
+                    break;
+
+                case 4:
+                    if (choice == 1)
+                        part = 7;
+                    else if (choice == 2)
+                        part = 0;  
+                    break;
+
+                case 5:
+                    if (choice == 1)
+                        part = 9;
+                    else if (choice == 2)
+                        part = 0;  
+                    break;
+
+                case 6:
+                    if (choice == 1)
+                        part = 10;
+                    else if (choice == 2)
+                        part = 0;  
+                    break;
+
+                case 8:
+                    if (choice == 1)
+                        part = 11;
+                    else if (choice == 2)
+                        part = 0;  
+                    break;
+
+                case 9:
+                    if (choice == 1)
+                        part = 12;
+                    else if (choice == 2)
+                        part = 0; 
+                    break;
+
+                default:
+                    part = 0;
+                    break;
+            }
+        }
+    }
+};
+
+int main() {
+    AdventureGame game;
+    game.startGame();
+
+    return 0;
+}
