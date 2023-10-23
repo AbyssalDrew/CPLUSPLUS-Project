@@ -1,0 +1,68 @@
+#include <iostream>
+#include <iomanip> // For setting the precision of the output
+
+using namespace std;
+
+// Function to calculate the result based on the operator
+float Calculate(char op, float num1, float num2) {
+    switch (op) {
+        case '+':
+            return num1 + num2;
+        case '-':
+            return num1 - num2;
+        case '*':
+            return num1 * num2;
+        case '/':
+            if (num2 != 0)
+                return num1 / num2;
+            else {
+                cout << "Division by zero is not allowed." << endl;
+                return 0;
+            }
+        default:
+            cout << "Invalid operator." << endl;
+            return 0;
+    }
+}
+
+int main() {
+    // Declare variables to store the user's input and the result of the calculation.
+    char op;
+    float num1, num2, result;
+    char answer;
+
+    // Display a welcome message to the user.
+    cout << "Welcome to a simple calculator!" << endl;
+
+    do {
+        // Get the user's input for the math operation and the two numbers.
+        cout << "Enter the math operation (+, -, *, or /): ";
+        cin >> op;
+        cout << "Enter the first number: ";
+        cin >> num1;
+        cout << "Enter the second number: ";
+        cin >> num2;
+
+        // Perform the calculation and store the result.
+        result = Calculate(op, num1, num2);
+
+        // Display the result to the user.
+        if (op == '/' && num2 != 0) {
+            // Display the result of the division operation, rounded to two decimal places.
+            cout << fixed << setprecision(2); // Set precision to 2 decimal places
+            cout << "The result is " << num1 << " " << op << " " << num2 << " = " << result << endl;
+        } else {
+            cout << num1 << " " << op << " " << num2 << " = " << result << endl;
+        }
+
+        // Ask the user if they want to do another calculation.
+        cout << "Do you want to do another calculation? (y/n) ";
+        cin >> answer;
+
+    } while (answer == 'y' || answer == 'Y');
+
+    // Display a goodbye message to the user.
+    cout << "Goodbye!" << endl;
+
+    return 0;
+}
