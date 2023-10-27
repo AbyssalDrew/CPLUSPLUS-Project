@@ -1,0 +1,35 @@
+#include <iostream>
+#include <chrono>
+#include <thread>
+
+int main() {
+    using namespace std;
+    using namespace chrono;
+
+    // Variables to store start and stop times
+    high_resolution_clock::time_point startTime;
+    high_resolution_clock::time_point stopTime;
+
+    char choice;
+    do {
+        cout << "Press any key to start the stopwatch..." << endl;
+        cin.ignore(); // Wait for user input to start
+
+        startTime = high_resolution_clock::now();
+
+        cout << "Stopwatch running. Press any key to stop..." << endl;
+        cin.ignore(); // Wait for user input to stop
+
+        stopTime = high_resolution_clock::now();
+
+        duration<double> elapsedTime = duration_cast<duration<double>>(stopTime - startTime);
+
+        cout << "Elapsed time: " << elapsedTime.count() << " seconds" << endl;
+
+        cout << "Do you want to restart the stopwatch? (y/n): ";
+        cin >> choice;
+    } while (choice == 'y' || choice == 'Y');
+
+    return 0;
+}
+
